@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiFunction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Creates a new Baha Mar room reservation for a known guest identified by email, and returns the confirmation number. Confirm hotel, dates, guest count, and room type before calling.</description>
+    <invocationTarget>BahaMarCreateReservation</invocationTarget>
+    <invocationTargetType>apex</invocationTargetType>
+    <isConfirmationRequired>false</isConfirmationRequired>
+    <masterLabel>BahaMar Create Reservation</masterLabel>
+</GenAiFunction>

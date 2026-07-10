@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiFunction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Searches bookable Baha Mar experiences (wildlife encounters, golf, kids club, spa, pool clubs, nightlife, cabanas) by keyword and youngest participant age. Returns names, prices, schedules, and age minimums.</description>
+    <invocationTarget>BahaMarSearchExperiences</invocationTarget>
+    <invocationTargetType>apex</invocationTargetType>
+    <isConfirmationRequired>false</isConfirmationRequired>
+    <masterLabel>BahaMar Search Experiences</masterLabel>
+</GenAiFunction>

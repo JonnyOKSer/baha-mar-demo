@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiFunction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Moves a verified Baha Mar reservation to new check-in and check-out dates. Restate old dates, new dates, and guest count and get an explicit yes from the guest before calling.</description>
+    <invocationTarget>BahaMarUpdateReservationDates</invocationTarget>
+    <invocationTargetType>apex</invocationTargetType>
+    <isConfirmationRequired>false</isConfirmationRequired>
+    <masterLabel>BahaMar Update Reservation Dates</masterLabel>
+</GenAiFunction>

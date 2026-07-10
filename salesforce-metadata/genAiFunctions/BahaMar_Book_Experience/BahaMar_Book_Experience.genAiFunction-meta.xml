@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiFunction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Books a Baha Mar experience against a verified reservation and charges it to the room. Confirm experience, date, and party size with the guest before calling.</description>
+    <invocationTarget>BahaMarBookExperience</invocationTarget>
+    <invocationTargetType>apex</invocationTargetType>
+    <isConfirmationRequired>false</isConfirmationRequired>
+    <masterLabel>BahaMar Book Experience</masterLabel>
+</GenAiFunction>

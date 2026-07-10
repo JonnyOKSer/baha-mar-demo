@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiFunction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Saves an event inquiry (birthday, bachelorette, wedding...) incrementally. Call after EACH new detail the guest shares so nothing is lost if they disconnect; pass back the returned RFI Id on later calls. Set markSubmitted true once all details are collected.</description>
+    <invocationTarget>BahaMarSaveRFI</invocationTarget>
+    <invocationTargetType>apex</invocationTargetType>
+    <isConfirmationRequired>false</isConfirmationRequired>
+    <masterLabel>BahaMar Save Event RFI</masterLabel>
+</GenAiFunction>

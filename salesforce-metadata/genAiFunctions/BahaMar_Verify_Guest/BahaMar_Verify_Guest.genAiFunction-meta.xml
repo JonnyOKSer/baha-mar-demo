@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiFunction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Verifies a Baha Mar guest by full name and confirmation number and returns their reservation summary. Must succeed before any reservation change or booking on unauthenticated channels.</description>
+    <invocationTarget>BahaMarVerifyGuest</invocationTarget>
+    <invocationTargetType>apex</invocationTargetType>
+    <isConfirmationRequired>false</isConfirmationRequired>
+    <masterLabel>BahaMar Verify Guest</masterLabel>
+</GenAiFunction>

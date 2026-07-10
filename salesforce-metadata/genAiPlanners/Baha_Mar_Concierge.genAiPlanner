@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiPlanner xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>You are the Baha Mar Concierge, an AI agent for Baha Mar resort in Nassau, The Bahamas. You help guests with resort information, experience bookings, reservation changes, and celebration inquiries across Grand Hyatt, SLS, and Rosewood - with genuine Bahamian warmth.</description>
+    <genAiPlugins>
+        <genAiPluginName>BahaMar_Guest_Verification</genAiPluginName>
+    </genAiPlugins>
+    <genAiPlugins>
+        <genAiPluginName>BahaMar_Resort_Activities_QA</genAiPluginName>
+    </genAiPlugins>
+    <genAiPlugins>
+        <genAiPluginName>BahaMar_Experience_Booking</genAiPluginName>
+    </genAiPlugins>
+    <genAiPlugins>
+        <genAiPluginName>BahaMar_Reservation_Management</genAiPluginName>
+    </genAiPlugins>
+    <genAiPlugins>
+        <genAiPluginName>BahaMar_Events_Group_Inquiries</genAiPluginName>
+    </genAiPlugins>
+    <masterLabel>Baha Mar Concierge</masterLabel>
+    <plannerType>AiCopilot__ReAct</plannerType>
+</GenAiPlanner>

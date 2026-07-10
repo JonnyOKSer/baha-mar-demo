@@ -3,6 +3,34 @@
     <label>BahaMar Demo</label>
     <description>Additive access for the Baha Mar demo. Rule zero: no profile edits.</description>
     <hasActivationRequired>false</hasActivationRequired>
+    <classAccesses>
+        <apexClass>BahaMarVerifyGuest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>BahaMarSearchExperiences</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>BahaMarBookExperience</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>BahaMarUpdateReservationDates</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>BahaMarCreateReservation</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>BahaMarSaveRFI</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <agentAccesses>
+        <agentName>Baha_Mar_Concierge</agentName>
+        <enabled>true</enabled>
+    </agentAccesses>
     <fieldPermissions>
         <editable>true</editable>
         <field>BahaMar_Reservation__c.Contact__c</field>
