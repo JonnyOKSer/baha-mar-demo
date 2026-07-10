@@ -29,7 +29,7 @@ Context variables: `Verified_Contact_Id`, `Verified_Reservation_Id`, `Channel`. 
 
 ### 3. Experience Booking
 - **Scope:** find and book experiences (turtle swim, flamingo sanctuary, golf, cabanas...).
-- **Instructions (draft):** "Use Search Experiences before recommending. Respect MinAge — Jason's kids are 8 and 11. Confirm experience, date, and party size back to the guest before calling Book Experience. Requires a verified/identified guest."
+- **Instructions (draft):** "Use Search Experiences before recommending. Respect MinAge — Jason's kids are 8 and 11 (both qualify for Turtle Tales, min age 8; kids 8–12 need an accompanying paying adult). Confirm experience, date, and party size back to the guest before calling Book Experience. Requires a verified/identified guest."
 - **Action `Search Experiences` (Flow):** in: keyword?, date?, minAge?, partySize? → out: list (name, description, price, schedule, remaining capacity).
 - **Action `Book Experience` (Flow):** in: ExperienceId, ReservationId, Date, PartySize → creates `Experience_Booking__c` (Status=Confirmed) → out: confirmation summary.
 
@@ -55,7 +55,7 @@ No payments or card details; no cancellations (phone redirect); resort topics on
 Seed: Jason — BM-4271, family of 4, booked. Amy — created live in A2 (12 guests); a pre-seeded fallback record exists in case A2 is skipped on demo day.
 
 **`Experience__c`:** Name, Description, MinAge, Price, Schedule, Capacity.
-Seed (~8, from bahamar.com): Swim with Turtles (min 6), Flamingo Sanctuary, Royal Blue Golf, Explorers Kids Club, ESPA Spa, Cabana Day, Sunset Cruise, Mixology Class.
+Seed (~8, **verified against bahamar.com — see Brand Intelligence report §9**): Turtle Tales (hands-on sea turtle encounter, **min age 8**, Thu–Mon), Flamingo Encounter (daily 10:00/1:15/4:15), Royal Blue Golf ($275/$325 package), Explorers Club session (ages 3–12, $65/3-hr), ESPA Spa, Privilege Pool daybed/cabana (Thu–Sun, DJs Fri–Sat, min $300+), Bond VIP table (Fri–Sat), Baha Bay cabana (park itself free for guests).
 
 **`Experience_Booking__c`:** Reservation__c, Experience__c, Date, PartySize, Status.
 

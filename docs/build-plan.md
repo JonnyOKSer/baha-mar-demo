@@ -29,7 +29,17 @@ Optional upgrade if time allows (not on critical path): Twilio WhatsApp Sandbox 
 
 ## Step 0 — Org audit (Day 1, blocks everything)
 
-Verify in the Stella trial org before building:
+**Partially done Jul 10 via External Client App (client-credentials OAuth verified working):**
+
+- Org: `aquiva.my.salesforce.com` — "Aquiva", Enterprise Edition trial, **expires Aug 11, 2026** ✅ (3 weeks past demo)
+- Existing agents: `Voyager_Loyalty_Concierge` (Stella) + default Copilot — new Baha Mar agent sits alongside ✅
+- MIAW confirmed working in this org: Stella's frontend embeds deployment `ESWVoyagerConcierge…` from `aquiva.my.site.com` ✅ (so Experience Cloud + Embedded Messaging are proven — Baha Mar needs its own deployment pointing at the new agent)
+- Agent API host `api.salesforce.com` reachable from build sandbox ✅
+- Stella frontend pattern (from Netlify deploy download): single self-contained `index.html` with the MIAW `bootstrap.min.js` snippet — saved as `stella-frontend-reference.html` in the project folder. Baha Mar landing page follows the identical pattern.
+
+Still to verify in Setup UI: Einstein request limits remaining, Data Library availability.
+
+Original checklist:
 
 | Check | Where | Why |
 |---|---|---|
@@ -98,7 +108,7 @@ Guardrails: no payment handling, no cancellations (redirect to phone), stay on r
 
 **Jason J2 (known user):** returns from the email → chat greets him by name → helps him pick a room/package and complete the booking.
 
-**Jason J5 (web, authenticated):** chat: "What is there for kids at the resort?" → agent lists grounded activities → "Book the swim with turtles for my two kids on Tuesday" → agent confirms booking with details → show `Experience_Booking__c` record in the org (the "and it's real CRM data" moment).
+**Jason J5 (web, authenticated):** chat: "What is there for kids at the resort?" → agent lists grounded activities (Baha Bay free for guests, Explorers Club, Turtle Tales, Flamingo Encounter) → "Book the turtle encounter for my two kids on Tuesday" → agent confirms **Turtle Tales** (real product name — verified; min age 8, both kids qualify at 8 & 11, adult accompanies) → show `Experience_Booking__c` record in the org (the "and it's real CRM data" moment). Stretch beat: parallel scheduling — Royal Blue tee time + kids' Explorers Club session + reconvene at the fountain show.
 
 **Amy A1 (web + RFI):** chat: "I want to celebrate my 30th with a big group" → agent answers, steers to the Meetings & Events RFI form → she starts filling it and disconnects → show the partial Lead/RFI record MCN will follow up on. (Handoff beat to Salesforce's A2 email.)
 
@@ -115,9 +125,10 @@ Guardrails: no payment handling, no cancellations (redirect to phone), stay on r
 
 ## Repos & references
 
-- **Demo repo (new):** https://github.com/aquivalabs/baha-mar-demo — all demo code (sfdx project, landing page, WhatsApp simulator) lives here.
+- **Demo repo (working):** https://github.com/JonnyOKSer/baha-mar-demo — active development here (org PAT policy blocks the aquivalabs repos for now); mirror to https://github.com/aquivalabs/baha-mar-demo later. First commit pushed Jul 10 (docs + prototypes).
 - **Stella repo (piggyback source):** https://github.com/aquivalabs/aquiva-agentic-tth-loyalty — reference for org setup, agent metadata patterns, and anything reusable (connected app config, deploy scripts).
 - **Stella frontend:** https://app.netlify.com/projects/aquiva-agentic-loyalty/overview — Netlify hosting pattern to reuse for the demo's landing page + simulator.
+- **Demo frontend (live):** https://bahamardemo.netlify.app (landing page; `/whatsapp` = simulator) — Netlify project `bahamardemo`, auto-deploys from the demo repo's main branch, publish dir `web/` via netlify.toml.
 
 ## Open items
 
