@@ -172,7 +172,7 @@
     <input id="input" placeholder="Type a message…" onkeydown="if(event.key==='Enter')send()">
     <button onclick="send()">➤</button>
   </div>
-  <div class="demo-hint" id="hint">Design prototype — press Enter to play the scripted scene</div>
+  <div class="demo-hint" id="hint">Scripted fallback mode — press Enter to play the scene</div>
 </div>
 
 <script>
@@ -240,7 +240,7 @@ function addMsg(text, who){
 }
 function showTyping(on){ typing.style.display = on ? 'block' : 'none'; msgs.scrollTop = msgs.scrollHeight; }
 
-function openChat(){
+function openChatScripted(){
   const c = document.getElementById('chat');
   if(!c.classList.contains('open')){
     c.classList.add('open');
@@ -251,10 +251,40 @@ function openChat(){
   }
   document.getElementById('input').focus();
 }
-function toggleChat(){
+function toggleChatScripted(){
   const c = document.getElementById('chat');
-  if(c.classList.contains('open')) c.classList.remove('open'); else openChat();
+  if(c.classList.contains('open')) c.classList.remove('open'); else openChatScripted();
 }
+
+
+/* ---------- LIVE AGENTFORCE CHAT (default) vs SCRIPTED (?mode=scripted) ---------- */
+const scripted = params.get('mode') === 'scripted';
+if (!scripted) {
+  // hide the scripted widget; load real Embedded Messaging (same pattern as production reference)
+  document.querySelector('.chat-launcher').style.display = 'none';
+  document.getElementById('chat').style.display = 'none';
+  window.initEmbeddedMessaging = function() {
+    try {
+      embeddedservice_bootstrap.settings.language = 'en_US';
+      embeddedservice_bootstrap.init(
+        '00Da500001Wob3O',
+        'Baha_Mar_Concierge_Web',
+        'https://aquiva.my.site.com/ESWBahaMarConciergeWeb1783721927134',
+        { scrt2URL: 'https://aquiva.my.salesforce-scrt.com' }
+      );
+    } catch (err) { console.error('Error loading Embedded Messaging: ', err); }
+  };
+  const s = document.createElement('script');
+  s.src = 'https://aquiva.my.site.com/ESWBahaMarConciergeWeb1783721927134/assets/js/bootstrap.min.js';
+  s.onload = () => window.initEmbeddedMessaging();
+  s.onerror = () => console.error('Embedded Messaging bootstrap failed to load');
+  document.body.appendChild(s);
+}
+function openChat(){
+  if (!scripted) { try { embeddedservice_bootstrap.utilAPI.launchChat(); } catch(e) { console.error(e); } return; }
+  openChatScripted();
+}
+function toggleChat(){ if (scripted) toggleChatScripted(); }
 
 function send(){
   const input = document.getElementById('input');
