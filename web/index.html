@@ -268,14 +268,14 @@ if (!scripted) {
       embeddedservice_bootstrap.settings.language = 'en_US';
       embeddedservice_bootstrap.init(
         '00Da500001Wob3O',
-        'Baha_Mar_Concierge_Web',
-        'https://aquiva.my.site.com/ESWBahaMarConciergeWeb1783721927134',
+        'Baha_Mar_Web_Chat',
+        'https://aquiva.my.site.com/ESWBahaMarWebChat1783726213773',
         { scrt2URL: 'https://aquiva.my.salesforce-scrt.com' }
       );
     } catch (err) { console.error('Error loading Embedded Messaging: ', err); }
   };
   const s = document.createElement('script');
-  s.src = 'https://aquiva.my.site.com/ESWBahaMarConciergeWeb1783721927134/assets/js/bootstrap.min.js';
+  s.src = 'https://aquiva.my.site.com/ESWBahaMarWebChat1783726213773/assets/js/bootstrap.min.js';
   s.onload = () => window.initEmbeddedMessaging();
   s.onerror = () => console.error('Embedded Messaging bootstrap failed to load');
   document.body.appendChild(s);
