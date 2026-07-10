@@ -2,6 +2,8 @@
 
 New Agentforce Service Agent in the Stella trial org (existing Stella agent untouched). One agent serves all six Aquiva scenes across two channels.
 
+**Rule zero (see Build Plan):** everything additive, everything prefixed. All custom object/field/flow API names in this spec carry a `BahaMar_` prefix in the actual build (e.g. `Reservation__c` → `BahaMar_Reservation__c`); access via the `BahaMar_Demo` permission set, never profile edits; Stella's metadata is read-only to us.
+
 ## Identity & session handling per scene
 
 | Scene | Channel | Identity state | Mechanism |

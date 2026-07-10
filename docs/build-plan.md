@@ -2,6 +2,18 @@
 
 **Target:** demo week of Jul 20 (dry-run Jul 16–17) · **Org:** existing Stella Agentforce trial org, **new agent** alongside Stella's (piggyback the framework/setup, don't touch the existing agent) · **Owner:** Aquiva
 
+## Rule zero — do not break Stella (or anything else in the org)
+
+The org is shared with the live Stella demo. Non-negotiable guardrails for every change:
+
+1. **Additive only.** We create new metadata; we never modify or delete anything that existed before us. No edits to the Stella agent, its topics/flows, the `ESWVoyagerConcierge` MIAW deployment, existing objects, profiles, or org-wide settings.
+2. **Namespace by prefix.** Every API name we create starts with `BahaMar_` (objects, fields, flows, permission set, agent, Embedded Service deployment). Anything prefixed is ours; anything not is untouchable.
+3. **No profile edits.** Object/field access via a new `BahaMar_Demo` permission set assigned to the integration user only.
+4. **Deploys run `rollbackOnError=true`**, scoped to explicitly listed components — never wildcard, never destructiveChanges.
+5. **Inventory snapshot before building** (agents, objects, flows) committed to the repo — the "before" evidence; re-run after major deploys to prove no drift.
+6. **Demo data is quarantined**: records only in `BahaMar_*` objects, plus Contacts marked with demo email domain; nothing created in objects Stella uses without prefix separation.
+7. **New channels only**: Baha Mar gets its own Embedded Service deployment and its own agent; Stella's remain active and untouched. Nothing we do requires deactivating any existing agent.
+
 ## Scope
 
 Split confirmed (Jul 10): **all MCN email/SMS scenes are Salesforce; every AI Concierge / Agentforce touchpoint is Aquiva.**
@@ -122,6 +134,18 @@ Guardrails: no payment handling, no cancellations (redirect to phone), stay on r
 - **Agent API not available in trial**: fall back to MIAW behind the WhatsApp skin (MIAW has a REST API too), or worst case run the simulator against scripted responses.
 - **Non-deterministic agent answers live**: mitigate with tight topic instructions, curated knowledge, rehearsed prompts, and the recorded backup video.
 - **"Is that really WhatsApp?" question from the room**: answer honestly — simulator for the demo, identical agent attaches to the real WhatsApp channel via Digital Engagement in production. Have the one-slide architecture ready.
+
+## Status (end of day, Jul 10) & next steps
+
+**Built and verified:** data model + seed data (verified catalog) · 6 Apex actions (6/6 tests) · agent deployed + Active, answers correctly in Builder preview · landing page + WhatsApp simulator live on Netlify · brand report done · org CORS/CSP trust for the Netlify domain · two web channels + deployments (one API-born, one wizard-born), both published, config serving 200.
+
+**One blocker remains — web routing:** sessions reach Salesforce but never create AgentWork; chat says "Agent not available." Eliminated tonight: domain allowlist (fixed via CORS — config now loads), channel provenance (wizard-made channel behaves identically), escalation flow (added), bot user permissions (even ran as Stella's grandfathered bot user — no change). **Stella works end-to-end**, so the platform path is healthy.
+
+**Root-cause hypothesis (next session, ~30 min):** the Bot itself was created via Metadata API; Stella's was born in the New Agent wizard, which creates hidden runtime registrations (note her auto-generated `Voyager_Loyalty_Concierge..._Permissions` permset). Fix: create a fresh Service Agent via **New Agent wizard** in the UI, then attach our five existing `BahaMar_*` topics (they're already in the org) via Builder, connect it to the `Baha_Mar_Web_Chat` channel, publish. All topics/actions/data reusable as-is.
+
+**Important org finding:** the trial's **Data Cloud PSL (GenieDataPlatformStarterPsl) is 0 licenses / Disabled** — new Agentforce bot users can't get `GenieUserEnhancedSecurity`. Stella's bot user is grandfathered. Worth raising with the Salesforce trial contact; our agent currently (temporarily) runs as Stella's bot user (additive change; revert to `baha_mar_concierge@...ext` if licenses are restored).
+
+**Demo-day insurance is unaffected:** `?mode=scripted` on the landing page plays the full scripted scenes, and the WhatsApp simulator is scripted until wired.
 
 ## Repos & references
 
