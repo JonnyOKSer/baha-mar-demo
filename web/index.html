@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Baha Mar — Resort Destination in The Bahamas</title>
+<style>
+  :root{
+    --navy:#0d2c40; --teal:#1a7a8a; --gold:#c9a45c; --sand:#f6f1e7;
+    --ink:#22303a; --white:#ffffff;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:Georgia,'Times New Roman',serif;color:var(--ink);background:var(--white)}
+  .sans{font-family:'Helvetica Neue',Arial,sans-serif}
+
+  header{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;
+    justify-content:space-between;padding:18px 48px;background:rgba(13,44,64,.92);color:#fff}
+  .logo{font-size:26px;letter-spacing:6px;font-weight:400}
+  .logo span{color:var(--gold)}
+  nav a{color:#fff;text-decoration:none;margin-left:28px;font-size:13px;letter-spacing:2px;
+    text-transform:uppercase;font-family:'Helvetica Neue',Arial,sans-serif}
+  nav a:hover{color:var(--gold)}
+  .book-btn{background:var(--gold);color:var(--navy);padding:10px 22px;border:none;
+    font-size:12px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;margin-left:28px}
+
+  .hero{height:78vh;display:flex;align-items:center;justify-content:center;text-align:center;
+    background:linear-gradient(rgba(13,44,64,.35),rgba(13,44,64,.55)),
+    radial-gradient(ellipse at 30% 20%, #7fd4e0 0%, #1a7a8a 45%, #0d2c40 100%);color:#fff}
+  .hero h1{font-size:56px;font-weight:400;letter-spacing:3px;margin-bottom:16px}
+  .hero p{font-size:19px;letter-spacing:1px;opacity:.95;max-width:640px;margin:0 auto 30px}
+  .hero .cta{background:transparent;border:1px solid #fff;color:#fff;padding:14px 34px;
+    font-size:13px;letter-spacing:3px;text-transform:uppercase;cursor:pointer}
+  .hero .cta:hover{background:#fff;color:var(--navy)}
+
+  section{padding:72px 48px;max-width:1100px;margin:0 auto}
+  section h2{font-size:34px;font-weight:400;color:var(--navy);margin-bottom:10px;text-align:center}
+  section .sub{text-align:center;color:var(--teal);font-size:14px;letter-spacing:3px;
+    text-transform:uppercase;margin-bottom:44px;font-family:'Helvetica Neue',Arial,sans-serif}
+  .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+  .card{background:var(--sand);overflow:hidden}
+  .card .img{height:150px;display:flex;align-items:flex-end;padding:12px;color:#fff;
+    font-size:30px}
+  .card:nth-child(1) .img{background:linear-gradient(160deg,#2fa3b5,#0d5c6b)}
+  .card:nth-child(2) .img{background:linear-gradient(160deg,#e7a0ac,#b4495c)}
+  .card:nth-child(3) .img{background:linear-gradient(160deg,#79c68f,#2e7d4f)}
+  .card:nth-child(4) .img{background:linear-gradient(160deg,#e8c877,#a97e2c)}
+  .card h3{font-size:17px;color:var(--navy);padding:16px 16px 6px}
+  .card p{font-size:13.5px;line-height:1.55;color:#4a5a64;padding:0 16px 18px;
+    font-family:'Helvetica Neue',Arial,sans-serif}
+
+  .events{background:var(--navy);color:#fff;max-width:none}
+  .events-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+  .events h2{color:#fff;text-align:left}
+  .events .sub{text-align:left;color:var(--gold)}
+  .events p.lede{font-size:16px;line-height:1.7;opacity:.9}
+  form{background:#fff;color:var(--ink);padding:28px}
+  form h3{font-size:15px;letter-spacing:2px;text-transform:uppercase;color:var(--navy);
+    margin-bottom:18px;font-family:'Helvetica Neue',Arial,sans-serif}
+  .field{margin-bottom:14px}
+  .field label{display:block;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;
+    color:#7b8792;margin-bottom:5px;font-family:'Helvetica Neue',Arial,sans-serif}
+  .field input,.field select{width:100%;padding:10px;border:1px solid #d5dbe0;font-size:14px}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .submit{width:100%;background:var(--gold);border:none;color:var(--navy);padding:13px;
+    font-size:12px;letter-spacing:2.5px;text-transform:uppercase;cursor:pointer;margin-top:6px}
+
+  footer{background:#081c29;color:#93a5b1;text-align:center;padding:30px;font-size:12px;
+    letter-spacing:1px;font-family:'Helvetica Neue',Arial,sans-serif}
+
+  /* ---------- Concierge chat ---------- */
+  .chat-launcher{position:fixed;right:28px;bottom:28px;z-index:100;background:var(--teal);
+    color:#fff;border:none;border-radius:50%;width:62px;height:62px;font-size:26px;cursor:pointer;
+    box-shadow:0 8px 24px rgba(13,44,64,.35)}
+  .chat{position:fixed;right:28px;bottom:104px;z-index:100;width:372px;height:540px;background:#fff;
+    border-radius:14px;box-shadow:0 16px 48px rgba(13,44,64,.35);display:none;flex-direction:column;
+    overflow:hidden;font-family:'Helvetica Neue',Arial,sans-serif}
+  .chat.open{display:flex}
+  .chat-head{background:var(--navy);color:#fff;padding:14px 18px}
+  .chat-head .t{font-size:15px;font-weight:600}
+  .chat-head .s{font-size:11.5px;opacity:.75;margin-top:2px}
+  .chat-head .s::before{content:"●";color:#4cd07d;margin-right:5px}
+  .msgs{flex:1;overflow-y:auto;padding:16px;background:#f4f7f9;display:flex;flex-direction:column;gap:10px}
+  .m{max-width:82%;padding:10px 13px;border-radius:12px;font-size:13.5px;line-height:1.5;white-space:pre-line}
+  .m.agent{background:#fff;border:1px solid #e2e8ec;border-bottom-left-radius:3px;align-self:flex-start}
+  .m.user{background:var(--teal);color:#fff;border-bottom-right-radius:3px;align-self:flex-end}
+  .typing{align-self:flex-start;background:#fff;border:1px solid #e2e8ec;border-radius:12px;
+    padding:12px 16px;display:none}
+  .typing span{display:inline-block;width:6px;height:6px;background:#9fb0ba;border-radius:50%;
+    margin:0 2px;animation:blink 1.2s infinite}
+  .typing span:nth-child(2){animation-delay:.2s}.typing span:nth-child(3){animation-delay:.4s}
+  @keyframes blink{0%,60%,100%{opacity:.25}30%{opacity:1}}
+  .chat-input{display:flex;border-top:1px solid #e2e8ec}
+  .chat-input input{flex:1;border:none;padding:14px;font-size:13.5px;outline:none}
+  .chat-input button{background:none;border:none;color:var(--teal);font-size:20px;padding:0 16px;cursor:pointer}
+  .demo-hint{font-size:10.5px;color:#8a99a4;text-align:center;padding:5px;background:#f4f7f9;
+    border-top:1px solid #e9eef1}
+  .persona-badge{position:fixed;left:20px;bottom:20px;z-index:100;background:rgba(13,44,64,.85);
+    color:#fff;font-size:11px;letter-spacing:1px;padding:8px 14px;border-radius:20px;
+    font-family:'Helvetica Neue',Arial,sans-serif}
+  .persona-badge b{color:var(--gold)}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">BAHA<span>&nbsp;MAR</span></div>
+  <nav class="sans">
+    <a href="#stay">Stay</a><a href="#experiences">Experiences</a>
+    <a href="#events">Meetings &amp; Events</a><a href="#">Golf</a><a href="#">Casino</a>
+    <button class="book-btn">Book Now</button>
+  </nav>
+</header>
+
+<div class="hero">
+  <div>
+    <h1>Where The Bahamas Comes to Play</h1>
+    <p>Three iconic resorts, a Jack Nicklaus signature golf course, the Caribbean's largest casino, and nine miles of pure white sand.</p>
+    <button class="cta" onclick="openChat()">Chat with our Concierge</button>
+  </div>
+</div>
+
+<section id="experiences">
+  <h2>Curated Experiences</h2>
+  <div class="sub">For every kind of traveler</div>
+  <div class="cards">
+    <div class="card"><div class="img">🐢</div><h3>Swim with Turtles</h3><p>A guided sanctuary swim the kids will never forget. Ages 6+, daily departures.</p></div>
+    <div class="card"><div class="img">🦩</div><h3>Flamingo Sanctuary</h3><p>Meet our resident Caribbean flamingos with the flock's own keepers.</p></div>
+    <div class="card"><div class="img">⛳</div><h3>Royal Blue Golf</h3><p>Jack Nicklaus signature course — ocean views on the back nine.</p></div>
+    <div class="card"><div class="img">🥂</div><h3>Celebrations</h3><p>Cabana parties, sunset cruises and private dining for groups of any size.</p></div>
+  </div>
+</section>
+
+<section class="events" id="events">
+  <div class="events-inner">
+    <div>
+      <h2>Meetings &amp; Events</h2>
+      <div class="sub">Celebrations · Groups · Incentives</div>
+      <p class="lede">From milestone birthdays to executive retreats, our events team crafts unforgettable group experiences. Tell us about your event and a dedicated sales manager will be in touch within one business day.</p>
+    </div>
+    <form onsubmit="event.preventDefault()">
+      <h3>Request for Information</h3>
+      <div class="field"><label>Event type</label>
+        <select><option>Birthday celebration</option><option>Wedding</option><option>Corporate</option></select></div>
+      <div class="row2">
+        <div class="field"><label>Preferred date</label><input type="text" placeholder="Sep 2026"></div>
+        <div class="field"><label>Guests</label><input type="text" placeholder="12"></div>
+      </div>
+      <div class="field"><label>Full name</label><input type="text" placeholder="Amy Rodriguez"></div>
+      <div class="row2">
+        <div class="field"><label>Email</label><input type="email" placeholder="amy@example.com"></div>
+        <div class="field"><label>Phone</label><input type="tel" placeholder="+1 …"></div>
+      </div>
+      <button class="submit">Submit Request</button>
+    </form>
+  </div>
+</section>
+
+<footer>BAHA MAR · NASSAU, THE BAHAMAS · DEMO MOCK — NOT A PRODUCTION SITE</footer>
+
+<div class="persona-badge sans" id="personaBadge"></div>
+<button class="chat-launcher" onclick="toggleChat()" aria-label="Chat">💬</button>
+
+<div class="chat" id="chat">
+  <div class="chat-head">
+    <div class="t">Baha Mar Concierge</div>
+    <div class="s" id="chatSub">Powered by Agentforce</div>
+  </div>
+  <div class="msgs" id="msgs">
+    <div class="typing" id="typing"><span></span><span></span><span></span></div>
+  </div>
+  <div class="chat-input">
+    <input id="input" placeholder="Type a message…" onkeydown="if(event.key==='Enter')send()">
+    <button onclick="send()">➤</button>
+  </div>
+  <div class="demo-hint" id="hint">Design prototype — press Enter to play the scripted scene</div>
+</div>
+
+<script>
+/* ------------------------------------------------------------------
+   DESIGN PROTOTYPE ONLY.
+   Conversations are scripted per persona (?guest=anon|jason|amy).
+   In the build, this widget is replaced by MIAW embedded chat and
+   these scripts become the demo cheat-sheet.
+------------------------------------------------------------------- */
+const params = new URLSearchParams(location.search);
+const guest = params.get('guest') || 'anon';
+
+const SCRIPTS = {
+  /* J1 — anonymous first visit */
+  anon: {
+    badge: 'Scene J1 / A1 · <b>Anonymous visitor</b>',
+    greeting: "Welcome to Baha Mar! 🌴 I'm your AI concierge. Are you planning a getaway?",
+    turns: [
+      ["We're thinking about a family trip — two kids, 8 and 11. What's Baha Mar like for families?",
+       "Baha Mar is wonderful for families! A few highlights for kids aged 8 and 11:\n\n• Swim with Turtles — a guided sanctuary swim (ages 6+)\n• The Flamingo Sanctuary with daily keeper talks\n• Explorers Kids Club with supervised programs\n• Baha Bay waterpark, included with your stay\n\nWould you like me to check room availability for your dates?"],
+      ["What about golf for me?",
+       "Absolutely — Royal Blue is our Jack Nicklaus signature course, with ocean views on the back nine. Guests can reserve tee times before arrival, and we offer a Stay & Play package that combines a suite with daily rounds.\n\nShall I put together a family package quote?"]
+    ]
+  },
+  /* J2/J5 — Jason known/authenticated */
+  jason: {
+    badge: 'Scene J2 / J5 · <b>Jason (known guest)</b>',
+    greeting: "Welcome back, Jason! 👋 Great to see you again. Your Grand Suite is confirmed for Aug 14–21 (confirmation BM-4271). How can I help you get ready?",
+    turns: [
+      ["What is there for the kids at the resort?",
+       "With Ethan (11) and Maya (8) in mind:\n\n• Swim with Turtles — guided sanctuary swim, ages 6+, $89/child\n• Flamingo Sanctuary visit — daily at 10am & 3pm, $45/child\n• Explorers Kids Club — full & half-day programs\n• Baha Bay waterpark — included with your stay\n\nWant me to book any of these?"],
+      ["Book the swim with turtles for both kids on Tuesday",
+       "Done! ✅ Here's your confirmation:\n\n🐢 Swim with Turtles\n📅 Tuesday, Aug 18 · 9:30 AM\n👧👦 2 children (Ethan & Maya)\n💳 $178 charged to your room\n\nBooking ref: EXP-1042. You'll get a reminder the evening before. Anything else — the Flamingo Sanctuary perhaps?"]
+    ]
+  },
+  /* A1 steer + A2 booking — Amy */
+  amy: {
+    badge: 'Scene A1 / A2 · <b>Amy (event inquiry → known guest)</b>',
+    greeting: "Hi! 🥂 I'm the Baha Mar concierge. Planning something special?",
+    turns: [
+      ["I want to celebrate my 30th birthday here with a big group of friends",
+       "Happy early 30th! 🎉 Baha Mar is made for milestone birthdays — private cabana parties at the beach club, sunset catamaran cruises, mixology classes, and VIP casino nights.\n\nFor group celebrations our events team builds a custom package. Can I get a few details? Roughly how many guests, and what dates are you thinking?"],
+      ["About 12 of us, sometime in September",
+       "Perfect — 12 guests in September, I've noted that. 📋\n\nAnd the best email to reach you, so our events sales manager can send you a tailored proposal?"],
+      ["amy.rodriguez@example.com — oh hang on, my dog is going crazy, got to go",
+       "No problem, Amy — I've saved everything so far (12 guests, September, birthday celebration). Our sales manager will follow up by email with party package ideas. Talk soon! 🐕"]
+    ]
+  }
+};
+
+const script = SCRIPTS[guest] || SCRIPTS.anon;
+document.getElementById('personaBadge').innerHTML = script.badge +
+  ' &nbsp;·&nbsp; switch: <a href="?guest=anon" style="color:#c9a45c">anon</a> / <a href="?guest=jason" style="color:#c9a45c">jason</a> / <a href="?guest=amy" style="color:#c9a45c">amy</a>';
+
+let turn = 0;
+const msgs = document.getElementById('msgs');
+const typing = document.getElementById('typing');
+
+function addMsg(text, who){
+  const d = document.createElement('div');
+  d.className = 'm ' + who;
+  d.textContent = text;
+  msgs.insertBefore(d, typing);
+  msgs.scrollTop = msgs.scrollHeight;
+}
+function showTyping(on){ typing.style.display = on ? 'block' : 'none'; msgs.scrollTop = msgs.scrollHeight; }
+
+function openChat(){
+  const c = document.getElementById('chat');
+  if(!c.classList.contains('open')){
+    c.classList.add('open');
+    if(!msgs.querySelector('.m')){
+      showTyping(true);
+      setTimeout(()=>{ showTyping(false); addMsg(script.greeting,'agent'); }, 900);
+    }
+  }
+  document.getElementById('input').focus();
+}
+function toggleChat(){
+  const c = document.getElementById('chat');
+  if(c.classList.contains('open')) c.classList.remove('open'); else openChat();
+}
+
+function send(){
+  const input = document.getElementById('input');
+  if(turn >= script.turns.length){
+    if(input.value.trim()){ addMsg(input.value.trim(),'user'); input.value='';
+      showTyping(true);
+      setTimeout(()=>{ showTyping(false);
+        addMsg("(End of scripted scene — in the live build, Agentforce answers here.)",'agent'); }, 800);
+    }
+    return;
+  }
+  const [u, a] = script.turns[turn++];
+  addMsg(input.value.trim() || u, 'user');
+  input.value = '';
+  showTyping(true);
+  setTimeout(()=>{ showTyping(false); addMsg(a,'agent'); }, 1100 + Math.random()*600);
+}
+</script>
+</body>
+</html>

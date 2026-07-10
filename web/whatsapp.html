@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Baha Mar Concierge — WhatsApp (Simulator)</title>
+<style>
+  :root{
+    --wa-green:#075e54; --wa-teal:#128c7e; --wa-bubble-out:#dcf8c6; --wa-bg:#e5ddd5;
+    --navy:#0d2c40; --gold:#c9a45c;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Helvetica Neue',Arial,sans-serif;background:
+    radial-gradient(ellipse at 30% 20%, #16455c 0%, var(--navy) 70%);
+    min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;gap:56px}
+
+  .stage-note{color:#9fb4c2;max-width:260px;font-size:13px;line-height:1.7}
+  .stage-note h1{color:#fff;font-size:20px;font-weight:500;margin-bottom:12px;letter-spacing:1px}
+  .stage-note b{color:var(--gold)}
+  .stage-note .tag{display:inline-block;margin-top:14px;border:1px solid #3a5568;border-radius:14px;
+    padding:5px 12px;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#7fd4e0}
+
+  /* phone frame */
+  .phone{width:380px;height:780px;background:#111;border-radius:48px;padding:14px;
+    box-shadow:0 30px 80px rgba(0,0,0,.55), inset 0 0 0 2px #2c2c2c;position:relative}
+  .notch{position:absolute;top:14px;left:50%;transform:translateX(-50%);width:150px;height:26px;
+    background:#111;border-radius:0 0 18px 18px;z-index:10}
+  .screen{width:100%;height:100%;border-radius:36px;overflow:hidden;display:flex;flex-direction:column;background:var(--wa-bg)}
+
+  .statusbar{background:var(--wa-green);color:#fff;font-size:11px;display:flex;
+    justify-content:space-between;padding:8px 22px 2px}
+  .wa-head{background:var(--wa-green);color:#fff;display:flex;align-items:center;gap:10px;padding:8px 12px 10px}
+  .back{font-size:20px;opacity:.9}
+  .avatar{width:38px;height:38px;border-radius:50%;background:var(--gold);color:var(--navy);
+    display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;letter-spacing:.5px}
+  .who{flex:1;min-width:0}
+  .who .n{font-size:15px;font-weight:600;display:flex;align-items:center;gap:5px}
+  .who .n .check{background:#25d366;color:#fff;border-radius:50%;width:14px;height:14px;
+    font-size:9px;display:inline-flex;align-items:center;justify-content:center}
+  .who .st{font-size:11.5px;opacity:.8}
+  .head-icons{display:flex;gap:18px;font-size:17px;opacity:.9}
+
+  .msgs{flex:1;overflow-y:auto;padding:14px 12px;display:flex;flex-direction:column;gap:6px;
+    background:var(--wa-bg) url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" opacity="0.05"><circle cx="20" cy="20" r="2" fill="%23075e54"/><circle cx="60" cy="60" r="2" fill="%23075e54"/></svg>')}
+  .day{align-self:center;background:#d4e9f0;color:#54656f;font-size:11px;padding:4px 10px;
+    border-radius:6px;margin-bottom:6px}
+  .sysnote{align-self:center;background:#fdf3c5;color:#5a5330;font-size:11px;padding:5px 12px;
+    border-radius:6px;text-align:center;max-width:85%;margin-bottom:6px}
+  .m{max-width:80%;padding:7px 9px 5px;border-radius:8px;font-size:13.5px;line-height:1.45;
+    white-space:pre-line;position:relative;box-shadow:0 1px 1px rgba(0,0,0,.08)}
+  .m.in{background:#fff;align-self:flex-start;border-top-left-radius:2px}
+  .m.out{background:var(--wa-bubble-out);align-self:flex-end;border-top-right-radius:2px}
+  .meta{display:block;text-align:right;font-size:10px;color:#8696a0;margin-top:3px}
+  .meta .ticks{color:#53bdeb;margin-left:3px}
+  .typing{align-self:flex-start;background:#fff;border-radius:8px;padding:11px 14px;display:none}
+  .typing span{display:inline-block;width:6px;height:6px;background:#9fb0ba;border-radius:50%;
+    margin:0 2px;animation:blink 1.2s infinite}
+  .typing span:nth-child(2){animation-delay:.2s}.typing span:nth-child(3){animation-delay:.4s}
+  @keyframes blink{0%,60%,100%{opacity:.25}30%{opacity:1}}
+
+  .inputbar{display:flex;align-items:center;gap:8px;padding:8px 10px;background:#f0f2f5}
+  .inputbar .emoji{font-size:20px;color:#54656f}
+  .inputbar input{flex:1;border:none;border-radius:20px;padding:10px 14px;font-size:13.5px;outline:none;background:#fff}
+  .sendbtn{width:42px;height:42px;border-radius:50%;border:none;background:#25d366;color:#fff;
+    font-size:17px;cursor:pointer}
+  .hint{background:#f0f2f5;color:#8a99a4;font-size:10px;text-align:center;padding:0 0 8px}
+</style>
+</head>
+<body>
+
+<div class="stage-note">
+  <h1>Scene A3 — Amy<br>WhatsApp Concierge</h1>
+  <p>Amy needs to move her 12-person birthday stay so everyone can make it. She messages the resort's WhatsApp line, verifies with her <b>name + confirmation number</b>, checks the change policy, and the agent updates the reservation.</p>
+  <p style="margin-top:12px">Press <b>Enter</b> in the message box to advance the scripted conversation.</p>
+  <span class="tag">Design prototype · Agent API in build</span>
+</div>
+
+<div class="phone">
+  <div class="notch"></div>
+  <div class="screen">
+    <div class="statusbar"><span>9:41</span><span>▂▄▆ 5G 🔋</span></div>
+    <div class="wa-head">
+      <span class="back">‹</span>
+      <div class="avatar">BM</div>
+      <div class="who">
+        <div class="n">Baha Mar <span class="check">✓</span></div>
+        <div class="st" id="presence">online</div>
+      </div>
+      <div class="head-icons"><span>📹</span><span>📞</span><span>⋮</span></div>
+    </div>
+    <div class="msgs" id="msgs">
+      <div class="day">Today</div>
+      <div class="sysnote">🔒 This business uses a secure service from Meta to manage this chat.</div>
+      <div class="typing" id="typing"><span></span><span></span><span></span></div>
+    </div>
+    <div class="inputbar">
+      <span class="emoji">😊</span>
+      <input id="input" placeholder="Message" onkeydown="if(event.key==='Enter')send()">
+      <button class="sendbtn" onclick="send()">➤</button>
+    </div>
+    <div class="hint">Simulator — same agent attaches to real WhatsApp via Digital Engagement in production</div>
+  </div>
+</div>
+
+<script>
+/* ------------------------------------------------------------------
+   DESIGN PROTOTYPE ONLY — scripted Scene A3.
+   Build version: replace SCRIPT playback with Agentforce Agent API
+   (create session → send message → poll/stream reply).
+------------------------------------------------------------------- */
+const SCRIPT = [
+  ["Hi! I need to change my reservation 🙏",
+   "Hi, welcome to Baha Mar! 🌴 I can help with that. To pull up your reservation, could you share the full name on the booking and your confirmation number?"],
+  ["Amy Rodriguez, BM-5883",
+   "Thanks Amy, you're verified ✅\n\nI found your reservation:\n📋 BM-5883 · Party Suite + 5 rooms\n📅 Sep 11 – Sep 14, 2026\n👥 12 guests\n\nWhat would you like to change?"],
+  ["What's your date change policy first?",
+   "Good question! For group reservations:\n\n• Free date changes up to 14 days before arrival\n• Within 14 days, one free change; further changes $150/room\n• Subject to availability for the full party size\n\nYour arrival is more than 14 days out, so a change is free. 😊"],
+  ["Perfect — can you move us to the following weekend? Same 12 people",
+   "Of course! Just to confirm the change:\n\n❌ Current: Sep 11 – Sep 14\n✅ New: Sep 18 – Sep 21\n👥 12 guests · Party Suite + 5 rooms (unchanged)\n💰 No change fee\n\nShall I go ahead?"],
+  ["Yes please!",
+   "All done, Amy! 🎉\n\nYour reservation BM-5883 is now confirmed for Sep 18 – Sep 21, 2026, 12 guests. Updated confirmations are on their way to you and your group.\n\nAnything else for the big 3-0? I can recommend our sunset catamaran cruise for the first night! 🛥️"]
+];
+
+let turn = 0, greeted = false;
+const msgs = document.getElementById('msgs');
+const typing = document.getElementById('typing');
+const presence = document.getElementById('presence');
+
+function ts(){ const d=new Date(); return d.getHours()+':' + String(d.getMinutes()).padStart(2,'0'); }
+function addMsg(text, dir){
+  const m = document.createElement('div');
+  m.className = 'm ' + dir;
+  m.textContent = text;
+  const meta = document.createElement('span');
+  meta.className = 'meta';
+  meta.innerHTML = ts() + (dir==='out' ? ' <span class="ticks">✓✓</span>' : '');
+  m.appendChild(meta);
+  msgs.insertBefore(m, typing);
+  msgs.scrollTop = msgs.scrollHeight;
+}
+function showTyping(on){
+  typing.style.display = on ? 'block' : 'none';
+  presence.textContent = on ? 'typing…' : 'online';
+  msgs.scrollTop = msgs.scrollHeight;
+}
+function send(){
+  const input = document.getElementById('input');
+  if(turn >= SCRIPT.length){
+    if(input.value.trim()){ addMsg(input.value.trim(),'out'); input.value='';
+      showTyping(true);
+      setTimeout(()=>{ showTyping(false);
+        addMsg("(End of scripted scene — in the live build, Agentforce answers here.)",'in'); }, 900);
+    }
+    return;
+  }
+  const [u, a] = SCRIPT[turn++];
+  addMsg(input.value.trim() || u, 'out');
+  input.value = '';
+  showTyping(true);
+  setTimeout(()=>{ showTyping(false); addMsg(a,'in'); }, 1300 + Math.random()*700);
+}
+</script>
+</body>
+</html>
