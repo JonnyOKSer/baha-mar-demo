@@ -1,0 +1,7 @@
+[build]
+  publish = "web"
+
+[[redirects]]
+  from = "/whatsapp"
+  to = "/whatsapp.html"
+  status = 200
