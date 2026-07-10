@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableReports>true</enableReports>
+    <label>Baha Mar Reservation</label>
+    <pluralLabel>Baha Mar Reservations</pluralLabel>
+    <nameField>
+        <label>Confirmation Number</label>
+        <type>Text</type>
+    </nameField>
+    <sharingModel>ReadWrite</sharingModel>
+    <fields>
+        <fullName>Contact__c</fullName>
+        <label>Guest</label>
+        <type>Lookup</type>
+        <referenceTo>Contact</referenceTo>
+        <relationshipName>BahaMar_Reservations</relationshipName>
+        <required>false</required>
+    </fields>
+    <fields>
+        <fullName>CheckIn__c</fullName>
+        <label>Check-In</label>
+        <type>Date</type>
+        <required>false</required>
+    </fields>
+    <fields>
+        <fullName>CheckOut__c</fullName>
+        <label>Check-Out</label>
+        <type>Date</type>
+        <required>false</required>
+    </fields>
+    <fields>
+        <fullName>GuestCount__c</fullName>
+        <label>Guest Count</label>
+        <type>Number</type>
+        <precision>3</precision>
+        <scale>0</scale>
+        <required>false</required>
+    </fields>
+    <fields>
+        <fullName>RoomType__c</fullName>
+        <label>Room Type</label>
+        <type>Text</type>
+        <length>80</length>
+        <required>false</required>
+    </fields>
+    <fields>
+        <fullName>Hotel__c</fullName>
+        <label>Hotel</label>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value><fullName>Grand Hyatt</fullName><default>false</default><label>Grand Hyatt</label></value>
+                <value><fullName>SLS</fullName><default>false</default><label>SLS</label></value>
+                <value><fullName>Rosewood</fullName><default>false</default><label>Rosewood</label></value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Status__c</fullName>
+        <label>Status</label>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value><fullName>Booked</fullName><default>false</default><label>Booked</label></value>
+                <value><fullName>Modified</fullName><default>false</default><label>Modified</label></value>
+                <value><fullName>Cancelled</fullName><default>false</default><label>Cancelled</label></value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+</CustomObject>

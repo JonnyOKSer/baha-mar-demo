@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableReports>true</enableReports>
+    <label>Baha Mar Event RFI</label>
+    <pluralLabel>Baha Mar Event RFIs</pluralLabel>
+    <nameField>
+        <label>RFI Number</label>
+        <type>AutoNumber</type>
+        <displayFormat>RFI-{0000}</displayFormat>
+    </nameField>
+    <sharingModel>ReadWrite</sharingModel>
+    <fields>
+        <fullName>EventType__c</fullName>
+        <label>Event Type</label>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value><fullName>Wedding</fullName><default>false</default><label>Wedding</label></value>
+                <value><fullName>Honeymoon</fullName><default>false</default><label>Honeymoon</label></value>
+                <value><fullName>Bachelor/Bachelorette Party</fullName><default>false</default><label>Bachelor/Bachelorette Party</label></value>
+                <value><fullName>Gender Reveal</fullName><default>false</default><label>Gender Reveal</label></value>
+                <value><fullName>Babymoon</fullName><default>false</default><label>Babymoon</label></value>
+                <value><fullName>Birthday</fullName><default>false</default><label>Birthday</label></value>
+                <value><fullName>Bar/Bat Mitzvah</fullName><default>false</default><label>Bar/Bat Mitzvah</label></value>
+                <value><fullName>Anniversary</fullName><default>false</default><label>Anniversary</label></value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>EventDate__c</fullName>
+        <label>Preferred Date</label>
+        <type>Date</type>
+        <required>false</required>
+    </fields>
+    <fields>
+        <fullName>Headcount__c</fullName>
+        <label>Headcount</label>
+        <type>Number</type>
+        <precision>4</precision>
+        <scale>0</scale>
+        <required>false</required>
+    </fields>
+    <fields>
+        <fullName>ContactName__c</fullName>
+        <label>Contact Name</label>
+        <type>Text</type>
+        <length>120</length>
+        <required>false</required>
+    </fields>
+    <fields>
+        <fullName>Email__c</fullName>
+        <label>Email</label>
+        <type>Email</type>
+        <required>false</required>
+    </fields>
+    <fields>
+        <fullName>Phone__c</fullName>
+        <label>Phone</label>
+        <type>Phone</type>
+        <required>false</required>
+    </fields>
+    <fields>
+        <fullName>Location__c</fullName>
+        <label>Location</label>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value><fullName>Baha Mar</fullName><default>false</default><label>Baha Mar</label></value>
+                <value><fullName>Grand Hyatt</fullName><default>false</default><label>Grand Hyatt</label></value>
+                <value><fullName>SLS</fullName><default>false</default><label>SLS</label></value>
+                <value><fullName>Rosewood</fullName><default>false</default><label>Rosewood</label></value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Status__c</fullName>
+        <label>Status</label>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value><fullName>In Progress</fullName><default>false</default><label>In Progress</label></value>
+                <value><fullName>Submitted</fullName><default>false</default><label>Submitted</label></value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Source__c</fullName>
+        <label>Source</label>
+        <type>Text</type>
+        <length>50</length>
+        <required>false</required>
+    </fields>
+</CustomObject>

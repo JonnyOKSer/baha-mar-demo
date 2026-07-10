@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>BahaMar_Reservation__c</members>
+        <members>BahaMar_Experience__c</members>
+        <members>BahaMar_Experience_Booking__c</members>
+        <members>BahaMar_RFI__c</members>
+        <name>CustomObject</name>
+    </types>
+    <types>
+        <members>BahaMar_Demo</members>
+        <name>PermissionSet</name>
+    </types>
+    <version>62.0</version>
+</Package>

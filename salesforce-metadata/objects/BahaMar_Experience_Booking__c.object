@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableReports>true</enableReports>
+    <label>Baha Mar Experience Booking</label>
+    <pluralLabel>Baha Mar Experience Bookings</pluralLabel>
+    <nameField>
+        <label>Booking Ref</label>
+        <type>AutoNumber</type>
+        <displayFormat>EXP-{0000}</displayFormat>
+    </nameField>
+    <sharingModel>ReadWrite</sharingModel>
+    <fields>
+        <fullName>Reservation__c</fullName>
+        <label>Reservation</label>
+        <type>Lookup</type>
+        <referenceTo>BahaMar_Reservation__c</referenceTo>
+        <relationshipName>Experience_Bookings</relationshipName>
+        <required>false</required>
+    </fields>
+    <fields>
+        <fullName>Experience__c</fullName>
+        <label>Experience</label>
+        <type>Lookup</type>
+        <referenceTo>BahaMar_Experience__c</referenceTo>
+        <relationshipName>Experience_Bookings</relationshipName>
+        <required>false</required>
+    </fields>
+    <fields>
+        <fullName>Date__c</fullName>
+        <label>Date</label>
+        <type>Date</type>
+        <required>false</required>
+    </fields>
+    <fields>
+        <fullName>PartySize__c</fullName>
+        <label>Party Size</label>
+        <type>Number</type>
+        <precision>3</precision>
+        <scale>0</scale>
+        <required>false</required>
+    </fields>
+    <fields>
+        <fullName>Status__c</fullName>
+        <label>Status</label>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value><fullName>Confirmed</fullName><default>false</default><label>Confirmed</label></value>
+                <value><fullName>Cancelled</fullName><default>false</default><label>Cancelled</label></value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+</CustomObject>
