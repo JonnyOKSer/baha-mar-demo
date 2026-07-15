@@ -267,15 +267,15 @@ if (!scripted) {
     try {
       embeddedservice_bootstrap.settings.language = 'en_US';
       embeddedservice_bootstrap.init(
-        '00Da500001Wob3O',
+        '00Dg500000EykHd',
         'Baha_Mar_Web_Chat',
-        'https://aquiva.my.site.com/ESWBahaMarWebChat1783726213773',
-        { scrt2URL: 'https://aquiva.my.salesforce-scrt.com' }
+        'https://orgfarm-9936432e77-dev-ed.develop.my.site.com/ESWBahaMarWebChat1784153597118',
+        { scrt2URL: 'https://orgfarm-9936432e77-dev-ed.develop.my.salesforce-scrt.com' }
       );
     } catch (err) { console.error('Error loading Embedded Messaging: ', err); }
   };
   const s = document.createElement('script');
-  s.src = 'https://aquiva.my.site.com/ESWBahaMarWebChat1783726213773/assets/js/bootstrap.min.js';
+  s.src = 'https://orgfarm-9936432e77-dev-ed.develop.my.site.com/ESWBahaMarWebChat1784153597118/assets/js/bootstrap.min.js';
   s.onload = () => window.initEmbeddedMessaging();
   s.onerror = () => console.error('Embedded Messaging bootstrap failed to load');
   document.body.appendChild(s);
