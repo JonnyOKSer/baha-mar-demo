@@ -82,13 +82,8 @@ print("[snapshot]", json.dumps(snap))
 
 # ---------- Phase B: objects + permset (agentAccesses stripped for initial deploy) ----------
 objs = ["BahaMar_Reservation__c", "BahaMar_Experience__c", "BahaMar_Experience_Booking__c", "BahaMar_RFI__c"]
-permset = open(f"{META}/permissionsets/BahaMar_Demo.permissionset").read()
-permset_initial = re.sub(r"    <agentAccesses>.*?</agentAccesses>\n", "", permset, flags=re.S)
-zb = build_zip(
-    [(f"objects/{o}.object", f"{META}/objects/{o}.object") for o in objs] +
-    [("permissionsets/BahaMar_Demo.permissionset", permset_initial.encode())],
-    [("CustomObject", objs), ("PermissionSet", ["BahaMar_Demo"])])
-deploy_zip(zb, {"singlePackage": True, "rollbackOnError": True, "testLevel": "NoTestRun"}, "objects+permset")
+zb = build_zip([(f"objects/{o}.object", f"{META}/objects/{o}.object") for o in objs], [("CustomObject", objs)])
+deploy_zip(zb, {"singlePackage": True, "rollbackOnError": True, "testLevel": "NoTestRun"}, "objects")
 
 # ---------- Phase C: apex + tests ----------
 classes = ["BahaMarVerifyGuest", "BahaMarSearchExperiences", "BahaMarBookExperience",
@@ -103,6 +98,19 @@ if "--skip-tests" in sys.argv:
 else:
     opts["testLevel"] = "RunSpecifiedTests"; opts["runTests"] = ["BahaMarActionsTest"]
 deploy_zip(build_zip(entries, [("ApexClass", classes)]), opts, "apex")
+
+# ---------- Phase C2: permset (after apex exists; agentAccesses stripped) ----------
+permset = open(f"{META}/permissionsets/BahaMar_Demo.permissionset").read()
+permset_initial = re.sub(r"    <agentAccesses>.*?</agentAccesses>\n", "", permset, flags=re.S)
+zb = build_zip([("permissionsets/BahaMar_Demo.permissionset", permset_initial.encode())], [("PermissionSet", ["BahaMar_Demo"])])
+deploy_zip(zb, {"singlePackage": True, "rollbackOnError": True, "testLevel": "NoTestRun"}, "permset")
+
+# assign permset to run-as user IMMEDIATELY (FLS needed before seed inserts)
+me = json.load(urllib.request.urlopen(urllib.request.Request(f"https://{DOMAIN}/services/oauth2/userinfo",
+    headers={"Authorization": "Bearer " + TOK})))
+ps = q("SELECT Id FROM PermissionSet WHERE Name='BahaMar_Demo'")["records"][0]["Id"]
+if not q(f"SELECT Id FROM PermissionSetAssignment WHERE PermissionSetId='{ps}' AND AssigneeId='{me['user_id']}'")["records"]:
+    print("[permset->run-as]", call("/sobjects/PermissionSetAssignment", "POST", {"PermissionSetId": ps, "AssigneeId": me["user_id"]}))
 
 # ---------- Phase D: queue + flow ----------
 zb = build_zip(
