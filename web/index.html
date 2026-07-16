@@ -6,68 +6,92 @@
 <title>Baha Mar — Resort Destination in The Bahamas</title>
 <style>
   :root{
-    --navy:#0d2c40; --teal:#1a7a8a; --gold:#c9a45c; --sand:#f6f1e7;
-    --ink:#22303a; --white:#ffffff;
+    --teal:#00a4b4; --teal-dark:#007a87; --navy:#0d2c40; --gold:#c9a45c;
+    --ink:#3e4a54; --charcoal:#4a4a4a; --sand:#f8f5ef; --white:#ffffff;
   }
   *{margin:0;padding:0;box-sizing:border-box}
   body{font-family:Georgia,'Times New Roman',serif;color:var(--ink);background:var(--white)}
   .sans{font-family:'Helvetica Neue',Arial,sans-serif}
+  img{display:block}
 
+  /* ---------- header: white, airy, like bahamar.com ---------- */
   header{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;
-    justify-content:space-between;padding:18px 48px;background:rgba(13,44,64,.92);color:#fff}
-  .logo{font-size:26px;letter-spacing:6px;font-weight:400}
-  .logo span{color:var(--gold)}
-  nav a{color:#fff;text-decoration:none;margin-left:28px;font-size:13px;letter-spacing:2px;
+    justify-content:space-between;padding:16px 48px;background:rgba(255,255,255,.97);
+    border-bottom:1px solid #eceff1;box-shadow:0 1px 12px rgba(13,44,64,.06)}
+  .logo{font-size:24px;letter-spacing:8px;font-weight:400;color:var(--teal);display:flex;align-items:center;gap:10px}
+  .logo svg{width:22px;height:22px}
+  nav a{color:var(--charcoal);text-decoration:none;margin-left:26px;font-size:12px;letter-spacing:2.5px;
     text-transform:uppercase;font-family:'Helvetica Neue',Arial,sans-serif}
-  nav a:hover{color:var(--gold)}
-  .book-btn{background:var(--gold);color:var(--navy);padding:10px 22px;border:none;
-    font-size:12px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;margin-left:28px}
+  nav a:hover{color:var(--teal)}
+  .book-btn{background:var(--teal);color:#fff;padding:10px 22px;border:none;
+    font-size:11.5px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;margin-left:26px;
+    font-family:'Helvetica Neue',Arial,sans-serif}
+  .book-btn:hover{background:var(--teal-dark)}
 
-  .hero{height:78vh;display:flex;align-items:center;justify-content:center;text-align:center;
-    background:linear-gradient(rgba(13,44,64,.35),rgba(13,44,64,.55)),
-    radial-gradient(ellipse at 30% 20%, #7fd4e0 0%, #1a7a8a 45%, #0d2c40 100%);color:#fff}
-  .hero h1{font-size:56px;font-weight:400;letter-spacing:3px;margin-bottom:16px}
-  .hero p{font-size:19px;letter-spacing:1px;opacity:.95;max-width:640px;margin:0 auto 30px}
-  .hero .cta{background:transparent;border:1px solid #fff;color:#fff;padding:14px 34px;
-    font-size:13px;letter-spacing:3px;text-transform:uppercase;cursor:pointer}
+  /* ---------- hero: full-bleed resort photography ---------- */
+  .hero{height:86vh;min-height:540px;display:flex;align-items:center;justify-content:center;text-align:center;
+    background:linear-gradient(rgba(13,44,64,.28),rgba(13,44,64,.5)),
+    url('https://d3py87e0zuixsk.cloudfront.net/production/wp-content/uploads/2025/08/07091455/Baha-Mar-Bahamas-Best-Resort.webp') center/cover no-repeat;color:#fff}
+  .hero h1{font-size:54px;font-weight:400;letter-spacing:3px;margin-bottom:16px;text-shadow:0 2px 18px rgba(13,44,64,.45)}
+  .hero p{font-size:18px;letter-spacing:1px;opacity:.97;max-width:640px;margin:0 auto 30px;text-shadow:0 1px 10px rgba(13,44,64,.5)}
+  .hero .cta{background:rgba(255,255,255,.08);border:1px solid #fff;color:#fff;padding:15px 36px;
+    font-size:13px;letter-spacing:3px;text-transform:uppercase;cursor:pointer;backdrop-filter:blur(2px);
+    font-family:'Helvetica Neue',Arial,sans-serif;transition:all .25s}
   .hero .cta:hover{background:#fff;color:var(--navy)}
+  .hero .micro{font-size:13px;margin-top:14px;opacity:.85;font-style:italic}
 
-  section{padding:72px 48px;max-width:1100px;margin:0 auto}
-  section h2{font-size:34px;font-weight:400;color:var(--navy);margin-bottom:10px;text-align:center}
-  section .sub{text-align:center;color:var(--teal);font-size:14px;letter-spacing:3px;
-    text-transform:uppercase;margin-bottom:44px;font-family:'Helvetica Neue',Arial,sans-serif}
-  .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
-  .card{background:var(--sand);overflow:hidden}
-  .card .img{height:150px;display:flex;align-items:flex-end;padding:12px;color:#fff;
-    font-size:30px}
-  .card:nth-child(1) .img{background:linear-gradient(160deg,#2fa3b5,#0d5c6b)}
-  .card:nth-child(2) .img{background:linear-gradient(160deg,#e7a0ac,#b4495c)}
-  .card:nth-child(3) .img{background:linear-gradient(160deg,#79c68f,#2e7d4f)}
-  .card:nth-child(4) .img{background:linear-gradient(160deg,#e8c877,#a97e2c)}
-  .card h3{font-size:17px;color:var(--navy);padding:16px 16px 6px}
-  .card p{font-size:13.5px;line-height:1.55;color:#4a5a64;padding:0 16px 18px;
+  section{padding:80px 48px;max-width:1140px;margin:0 auto}
+  .kicker{text-align:center;color:var(--teal);font-size:19px;font-style:italic;margin-bottom:8px}
+  section h2{font-size:36px;font-weight:400;color:var(--navy);margin-bottom:12px;text-align:center;letter-spacing:1px}
+  section .lede-c{text-align:center;color:#68757f;font-size:15.5px;max-width:620px;margin:0 auto 48px;line-height:1.7}
+
+  /* ---------- experience cards: real photography ---------- */
+  .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:26px}
+  .card{background:#fff;overflow:hidden;box-shadow:0 2px 18px rgba(13,44,64,.09);transition:transform .25s,box-shadow .25s}
+  .card:hover{transform:translateY(-4px);box-shadow:0 10px 30px rgba(13,44,64,.16)}
+  .card .ph{height:180px;background-size:cover;background-position:center}
+  .card h3{font-size:17.5px;color:var(--navy);padding:18px 18px 4px;font-weight:400;letter-spacing:.5px}
+  .card .meta{padding:0 18px;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);
+    font-family:'Helvetica Neue',Arial,sans-serif}
+  .card p{font-size:13.5px;line-height:1.6;color:#5b6a74;padding:10px 18px 20px;
     font-family:'Helvetica Neue',Arial,sans-serif}
 
-  .events{background:var(--navy);color:#fff;max-width:none}
-  .events-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
-  .events h2{color:#fff;text-align:left}
-  .events .sub{text-align:left;color:var(--gold)}
-  .events p.lede{font-size:16px;line-height:1.7;opacity:.9}
-  form{background:#fff;color:var(--ink);padding:28px}
-  form h3{font-size:15px;letter-spacing:2px;text-transform:uppercase;color:var(--navy);
+  /* ---------- concierge thesis band ---------- */
+  .thesis{background:var(--navy);color:#fff;max-width:none;text-align:center;padding:70px 48px}
+  .thesis .kicker{color:var(--gold)}
+  .thesis h2{color:#fff}
+  .thesis p.big{font-size:16.5px;opacity:.9;max-width:600px;margin:0 auto 34px;line-height:1.75}
+  .prompts{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .prompt{border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.05);color:#fff;
+    padding:13px 22px;font-size:13.5px;font-style:italic;cursor:pointer;font-family:Georgia,serif;
+    transition:all .2s;border-radius:30px}
+  .prompt:hover{background:#fff;color:var(--navy)}
+
+  /* ---------- meetings & events ---------- */
+  .events{background:var(--sand);max-width:none}
+  .events-inner{max-width:1140px;margin:0 auto;display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:start}
+  .events .ph-side{background:url('https://d3py87e0zuixsk.cloudfront.net/production/wp-content/uploads/2026/05/27150538/Coral-Coast-260110-BAHA-MAR-10337_LR.webp') center/cover;min-height:480px;box-shadow:0 8px 30px rgba(13,44,64,.15)}
+  .events .copy{padding-top:8px}
+  .events .kicker{text-align:left}
+  .events h2{text-align:left}
+  .events p.lede{font-size:15.5px;line-height:1.75;color:#5b6a74;margin-bottom:26px}
+  form{background:#fff;color:var(--ink);padding:28px;box-shadow:0 4px 22px rgba(13,44,64,.08)}
+  form h3{font-size:14px;letter-spacing:2px;text-transform:uppercase;color:var(--navy);
     margin-bottom:18px;font-family:'Helvetica Neue',Arial,sans-serif}
   .field{margin-bottom:14px}
   .field label{display:block;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;
     color:#7b8792;margin-bottom:5px;font-family:'Helvetica Neue',Arial,sans-serif}
   .field input,.field select{width:100%;padding:10px;border:1px solid #d5dbe0;font-size:14px}
   .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-  .submit{width:100%;background:var(--gold);border:none;color:var(--navy);padding:13px;
-    font-size:12px;letter-spacing:2.5px;text-transform:uppercase;cursor:pointer;margin-top:6px}
+  .submit{width:100%;background:var(--teal);border:none;color:#fff;padding:13px;
+    font-size:12px;letter-spacing:2.5px;text-transform:uppercase;cursor:pointer;margin-top:6px;
+    font-family:'Helvetica Neue',Arial,sans-serif}
+  .submit:hover{background:var(--teal-dark)}
 
-  footer{background:#081c29;color:#93a5b1;text-align:center;padding:30px;font-size:12px;
-    letter-spacing:1px;font-family:'Helvetica Neue',Arial,sans-serif}
+  footer{background:var(--navy);color:#93a5b1;text-align:center;padding:32px;font-size:11.5px;
+    letter-spacing:1.5px;font-family:'Helvetica Neue',Arial,sans-serif}
 
-  /* ---------- Concierge chat ---------- */
+  /* ---------- Concierge chat (scripted fallback) ---------- */
   .chat-launcher{position:fixed;right:28px;bottom:28px;z-index:100;background:var(--teal);
     color:#fff;border:none;border-radius:50%;width:62px;height:62px;font-size:26px;cursor:pointer;
     box-shadow:0 8px 24px rgba(13,44,64,.35)}
@@ -98,16 +122,28 @@
     color:#fff;font-size:11px;letter-spacing:1px;padding:8px 14px;border-radius:20px;
     font-family:'Helvetica Neue',Arial,sans-serif}
   .persona-badge b{color:var(--gold)}
+
+  @media(max-width:900px){
+    .cards{grid-template-columns:1fr 1fr}
+    .events-inner{grid-template-columns:1fr}
+    .hero h1{font-size:36px}
+    header{padding:14px 20px} nav a{margin-left:14px}
+  }
 </style>
 </head>
 <body>
 
 <header>
-  <div class="logo">BAHA<span>&nbsp;MAR</span></div>
+  <div class="logo">BAHA
+    <svg viewBox="0 0 24 24" fill="none" stroke="#00a4b4" stroke-width="1.6" stroke-linecap="round">
+      <path d="M12 21V9"/><path d="M12 9C12 9 6 8 4 3c6-1 8 6 8 6z"/>
+      <path d="M12 9c0 0 6-1 8-6-6-1-8 6-8 6z"/><path d="M12 9C12 9 10 2 12 1c2 1 0 8 0 8z"/>
+    </svg>
+  MAR</div>
   <nav class="sans">
-    <a href="#stay">Stay</a><a href="#experiences">Experiences</a>
+    <a href="#stay">Hotels</a><a href="#experiences">Experiences</a>
     <a href="#events">Meetings &amp; Events</a><a href="#">Golf</a><a href="#">Casino</a>
-    <button class="book-btn">Book Now</button>
+    <button class="book-btn" onclick="openChat()">Ask the Concierge</button>
   </nav>
 </header>
 
@@ -116,46 +152,76 @@
     <h1>Where The Bahamas Comes to Play</h1>
     <p>Three iconic resorts, a Jack Nicklaus signature golf course, the Caribbean's largest casino, and nine miles of pure white sand.</p>
     <button class="cta" onclick="openChat()">Chat with our Concierge</button>
+    <div class="micro">Skip the menus — one question gets you there.</div>
   </div>
 </div>
 
 <section id="experiences">
-  <h2>Curated Experiences</h2>
-  <div class="sub">For every kind of traveler</div>
+  <div class="kicker">Curated Experiences</div>
+  <h2>For Every Kind of Traveler</h2>
+  <p class="lede-c">From hands-on wildlife encounters at The Sanctuary to championship golf and private celebrations — every experience, bookable in one conversation.</p>
   <div class="cards">
-    <div class="card"><div class="img">🐢</div><h3>Turtle Tales</h3><p>A hands-on sea turtle encounter at The Sanctuary — touch, feed, and learn. Ages 8+, Thursday to Monday.</p></div>
-    <div class="card"><div class="img">🦩</div><h3>Flamingo Encounter</h3><p>Meet our iconic flamingo flock at Flamingo Cay — daily encounters, free parade at 9:30 AM.</p></div>
-    <div class="card"><div class="img">⛳</div><h3>Royal Blue Golf</h3><p>The Bahamas' only Jack Nicklaus Signature course — island green on the back nine.</p></div>
-    <div class="card"><div class="img">🥂</div><h3>Celebrations</h3><p>Cabana parties, sunset cruises and private dining for groups of any size.</p></div>
+    <div class="card">
+      <div class="ph" style="background-image:url('https://d3py87e0zuixsk.cloudfront.net/production/wp-content/uploads/2025/08/07143114/Baha-Mar-Sea-Turtles.webp')"></div>
+      <h3>Turtle Tales</h3><div class="meta">The Sanctuary · Ages 8+ · $40</div>
+      <p>A 20-minute hands-on encounter with our resident green sea turtles — touch, feed, and learn from the conservation team.</p>
+    </div>
+    <div class="card">
+      <div class="ph" style="background-image:url('https://d3py87e0zuixsk.cloudfront.net/production/wp-content/uploads/2024/02/19125844/Flamingos-Baha-Mar-Family-Kids.webp')"></div>
+      <h3>Flamingo Encounter</h3><div class="meta">Flamingo Cay · Daily · $45</div>
+      <p>Meet our iconic Caribbean flamingo flock up close with the keepers — and catch the free parade every morning at 9:30.</p>
+    </div>
+    <div class="card">
+      <div class="ph" style="background-image:url('https://d3py87e0zuixsk.cloudfront.net/production/wp-content/uploads/2024/03/11120328/Baha-Mar-Golf-Course-ROYAL-BLUE-GOLFWEEK-best-in-bahamas.webp')"></div>
+      <h3>Royal Blue Golf</h3><div class="meta">Jack Nicklaus Signature</div>
+      <p>The Bahamas' only Jack Nicklaus Signature course — ocean views and an island green on the back nine.</p>
+    </div>
+    <div class="card">
+      <div class="ph" style="background-image:url('https://d3py87e0zuixsk.cloudfront.net/production/wp-content/uploads/2026/05/19130147/Pearly-Pink-Chapel-Ceremony-260110-BAHA-MAR-40575_LR.webp')"></div>
+      <h3>Celebrations</h3><div class="meta">Groups · Weddings · Events</div>
+      <p>Cabana parties, sunset cruises and private dining for groups of any size, crafted by our events team.</p>
+    </div>
+  </div>
+</section>
+
+<section class="thesis">
+  <div class="kicker">The Baha Mar Concierge</div>
+  <h2>Nine Menus. Forty Links. Or One Question.</h2>
+  <p class="big">Everything at Baha Mar — wildlife encounters, tee times, spa, cabanas, kids' clubs, celebrations — answered and booked in a single conversation, any hour of the day.</p>
+  <div class="prompts">
+    <button class="prompt" onclick="openChat()">"What is there for kids at the resort?"</button>
+    <button class="prompt" onclick="openChat()">"Book the turtle encounter for Tuesday"</button>
+    <button class="prompt" onclick="openChat()">"Planning a 30th birthday for 12 friends…"</button>
   </div>
 </section>
 
 <section class="events" id="events">
   <div class="events-inner">
-    <div>
+    <div class="ph-side"></div>
+    <div class="copy">
+      <div class="kicker">Celebrations · Groups · Incentives</div>
       <h2>Meetings &amp; Events</h2>
-      <div class="sub">Celebrations · Groups · Incentives</div>
       <p class="lede">From milestone birthdays to executive retreats, our events team crafts unforgettable group experiences. Tell us about your event and a dedicated sales manager will be in touch within one business day.</p>
+      <form onsubmit="event.preventDefault()">
+        <h3>Request for Information</h3>
+        <div class="field"><label>Event type</label>
+          <select><option>Birthday celebration</option><option>Wedding</option><option>Corporate</option></select></div>
+        <div class="row2">
+          <div class="field"><label>Preferred date</label><input type="text" placeholder="Sep 2026"></div>
+          <div class="field"><label>Guests</label><input type="text" placeholder="12"></div>
+        </div>
+        <div class="field"><label>Full name</label><input type="text" placeholder="Amy Rodriguez"></div>
+        <div class="row2">
+          <div class="field"><label>Email</label><input type="email" placeholder="amy@example.com"></div>
+          <div class="field"><label>Phone</label><input type="tel" placeholder="+1 …"></div>
+        </div>
+        <button class="submit">Submit Request</button>
+      </form>
     </div>
-    <form onsubmit="event.preventDefault()">
-      <h3>Request for Information</h3>
-      <div class="field"><label>Event type</label>
-        <select><option>Birthday celebration</option><option>Wedding</option><option>Corporate</option></select></div>
-      <div class="row2">
-        <div class="field"><label>Preferred date</label><input type="text" placeholder="Sep 2026"></div>
-        <div class="field"><label>Guests</label><input type="text" placeholder="12"></div>
-      </div>
-      <div class="field"><label>Full name</label><input type="text" placeholder="Amy Rodriguez"></div>
-      <div class="row2">
-        <div class="field"><label>Email</label><input type="email" placeholder="amy@example.com"></div>
-        <div class="field"><label>Phone</label><input type="tel" placeholder="+1 …"></div>
-      </div>
-      <button class="submit">Submit Request</button>
-    </form>
   </div>
 </section>
 
-<footer>BAHA MAR · NASSAU, THE BAHAMAS · DEMO MOCK — NOT A PRODUCTION SITE</footer>
+<footer>BAHA MAR · NASSAU, THE BAHAMAS · DEMO MOCK — NOT A PRODUCTION SITE · IMAGERY © BAHA MAR, USED FOR CLIENT DEMO ONLY</footer>
 
 <div class="persona-badge sans" id="personaBadge"></div>
 <button class="chat-launcher" onclick="toggleChat()" aria-label="Chat">💬</button>
@@ -179,8 +245,9 @@
 /* ------------------------------------------------------------------
    DESIGN PROTOTYPE ONLY.
    Conversations are scripted per persona (?guest=anon|jason|amy).
-   In the build, this widget is replaced by MIAW embedded chat and
-   these scripts become the demo cheat-sheet.
+   Live mode (default) loads MIAW Embedded Messaging; ?mode=scripted
+   plays these scenes as the demo fallback / cheat-sheet.
+   All facts below verified against bahamar.com July 2026.
 ------------------------------------------------------------------- */
 const params = new URLSearchParams(location.search);
 const guest = params.get('guest') || 'anon';
@@ -189,12 +256,12 @@ const SCRIPTS = {
   /* J1 — anonymous first visit */
   anon: {
     badge: 'Scene J1 / A1 · <b>Anonymous visitor</b>',
-    greeting: "Welcome to Baha Mar! 🌴 I'm your AI concierge. Are you planning a getaway?",
+    greeting: "Welcome to Baha Mar! 🌴 I'm your personal concierge. Are you planning a getaway?",
     turns: [
       ["We're thinking about a family trip — two kids, 8 and 11. What's Baha Mar like for families?",
-       "Baha Mar is wonderful for families! A few highlights for kids aged 8 and 11:\n\n• Swim with Turtles — a guided sanctuary swim (ages 6+)\n• The Flamingo Sanctuary with daily keeper talks\n• Explorers Kids Club with supervised programs\n• Baha Bay waterpark, included with your stay\n\nWould you like me to check room availability for your dates?"],
+       "Baha Mar is wonderful for families! A few highlights for kids aged 8 and 11:\n\n• Turtle Tales — a hands-on sea turtle encounter at The Sanctuary (ages 8+, $40/person)\n• The Flamingo Encounter with daily keeper meet-and-greets ($45)\n• Explorers Club — supervised kids' programs, ages 3–12\n• Baha Bay waterpark — included with your stay\n\nWould you like me to check room availability for your dates?"],
       ["What about golf for me?",
-       "Absolutely — Royal Blue is our Jack Nicklaus signature course, with ocean views on the back nine. Guests can reserve tee times before arrival, and we offer a Stay & Play package that combines a suite with daily rounds.\n\nShall I put together a family package quote?"]
+       "Absolutely — Royal Blue is our Jack Nicklaus Signature course, with ocean views on the back nine. Guests can reserve tee times before arrival, and we offer a Stay & Play package that combines a suite with daily rounds.\n\nShall I put together a family package quote?"]
     ]
   },
   /* J2/J5 — Jason known/authenticated */
@@ -203,9 +270,9 @@ const SCRIPTS = {
     greeting: "Welcome back, Jason! 👋 Great to see you again. Your Grand Suite is confirmed for Aug 14–21 (confirmation BM-4271). How can I help you get ready?",
     turns: [
       ["What is there for the kids at the resort?",
-       "With Ethan (11) and Maya (8) in mind:\n\n• Swim with Turtles — guided sanctuary swim, ages 6+, $89/child\n• Flamingo Sanctuary visit — daily at 10am & 3pm, $45/child\n• Explorers Kids Club — full & half-day programs\n• Baha Bay waterpark — included with your stay\n\nWant me to book any of these?"],
-      ["Book the swim with turtles for both kids on Tuesday",
-       "Done! ✅ Here's your confirmation:\n\n🐢 Swim with Turtles\n📅 Tuesday, Aug 18 · 9:30 AM\n👧👦 2 children (Ethan & Maya)\n💳 $178 charged to your room\n\nBooking ref: EXP-1042. You'll get a reminder the evening before. Anything else — the Flamingo Sanctuary perhaps?"]
+       "With Ethan (11) and Maya (8) in mind:\n\n• Turtle Tales — hands-on sea turtle encounter, ages 8+, $40/person\n• Flamingo Encounter — daily keeper visits, $45/person\n• Explorers Club — full & half-day supervised programs\n• Baha Bay waterpark — included with your stay\n\nWant me to book any of these?"],
+      ["Book the turtle encounter for both kids on Tuesday",
+       "Done! ✅ Here's your confirmation:\n\n🐢 Turtle Tales — The Sanctuary\n📅 Tuesday, Aug 18 · 9:30 AM\n👧👦 2 guests (Ethan & Maya, adult accompanying)\n💳 $80 + $8 VAT = $88 charged to your room\n\nBooking ref: EXP-1042. You'll get a reminder the evening before. Anything else — the Flamingo Encounter perhaps?"]
     ]
   },
   /* A1 steer + A2 booking — Amy */

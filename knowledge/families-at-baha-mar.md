@@ -16,7 +16,7 @@ Parents' tip the concierge should offer proactively: sessions pair beautifully w
 
 ## Wildlife at The Sanctuary
 
-- **Turtle Tales** — a 20-minute hands-on encounter with our resident green sea turtles: touch, feed, and learn from the conservation team. **Minimum age 8; ages 8–12 must be accompanied by a paying adult.** Runs Thursday–Monday. *(This is a touch-and-feed encounter — guests do not swim with the turtles.)*
+- **Turtle Tales** — a 20-minute hands-on encounter with our resident green sea turtles: touch, feed, and learn from the conservation team. **Minimum age 8; ages 8–12 must be accompanied by a paying adult.** Sessions from 9:30 AM on select days — check availability for your dates. $40 per person plus 10% VAT. *(This is a touch-and-feed encounter — guests do not swim with the turtles.)*
 - **Flamingo Encounter** — meet our iconic Caribbean flamingo flock up close at Flamingo Cay, daily at 10:00 AM, 1:15 PM, and 4:15 PM; capacity is limited, so book ahead. The **flamingo parade at 9:30 AM is free** and unmissable with younger kids.
 - The Sanctuary is also home to nurse sharks, macaws, and Aldabra tortoises.
 

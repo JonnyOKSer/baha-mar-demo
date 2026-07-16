@@ -152,7 +152,7 @@ for name, cid, ci, co, gc, rt, hotel in [
 print("[seed] contacts + reservations OK")
 
 EXPS = [
- ("Turtle Tales","A 20-minute hands-on encounter with our resident green sea turtles at The Sanctuary - touch, feed, and learn from our conservation team. Ages 8-12 must be accompanied by a paying adult; no guests under 8.",8,89,"Thursday-Monday, sessions at 11:00 AM and 2:30 PM",10),
+ ("Turtle Tales","A 20-minute hands-on encounter with our resident green sea turtles at The Sanctuary - touch, feed, and learn from our conservation team. Ages 8-12 must be accompanied by a paying adult; no guests under 8. $40 per person plus 10% VAT.",8,40,"Select days, 20-minute sessions from 9:30 AM at The Sanctuary; availability varies by date",10),
  ("Flamingo Encounter","Meet Baha Mar's iconic Caribbean flamingo flock up close at Flamingo Cay with the keepers. Don't miss the free flamingo parade daily at 9:30 AM.",5,45,"Daily at 10:00 AM, 1:15 PM, and 4:15 PM - limited capacity",12),
  ("Royal Blue Golf Round","The Bahamas' only Jack Nicklaus Signature course - dunes on the front nine, limestone moonscapes and an island green on the back. All-in package includes premium rental clubs, ProV1s, and an engraved bag tag.",12,325,"Tee times daily from 7:00 AM",4),
  ("Explorers Club Session","Supervised kids club for ages 3-12 (potty-trained) with themed programming - cooking, crafts, wildlife visits, and movie time. Three-hour sessions.",3,65,"Daily sessions 9:00 AM-12:00 PM and 1:00 PM-4:00 PM",20),
