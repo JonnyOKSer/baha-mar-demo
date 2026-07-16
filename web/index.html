@@ -291,7 +291,8 @@ const SCRIPTS = {
 };
 
 const script = SCRIPTS[guest] || SCRIPTS.anon;
-document.getElementById('personaBadge').innerHTML = script.badge +
+if (params.get('mode') !== 'scripted') document.getElementById('personaBadge').style.display = 'none';
+else document.getElementById('personaBadge').innerHTML = script.badge +
   ' &nbsp;·&nbsp; switch: <a href="?guest=anon" style="color:#c9a45c">anon</a> / <a href="?guest=jason" style="color:#c9a45c">jason</a> / <a href="?guest=amy" style="color:#c9a45c">amy</a>';
 
 let turn = 0;
