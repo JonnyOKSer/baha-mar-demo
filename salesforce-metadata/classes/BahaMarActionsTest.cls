@@ -43,6 +43,18 @@ private class BahaMarActionsTest {
         System.assertEquals(false, BahaMarBookExperience.run(new List<BahaMarBookExperience.Input>{bad})[0].success);
     }
 
+    @IsTest static void checkAvailability() {
+        BahaMarCheckAvailability.Input i = new BahaMarCheckAvailability.Input();
+        i.experienceName='Turtle'; i.bookingDate=String.valueOf(Date.today().addDays(32));
+        List<BahaMarCheckAvailability.Output> outs = BahaMarCheckAvailability.run(new List<BahaMarCheckAvailability.Input>{i});
+        System.assertEquals(true, outs[0].available, outs[0].slots);
+        System.assert(outs[0].slots.contains('spots left'), outs[0].slots);
+        System.assert(outs[0].slots.contains('VAT'), outs[0].slots);
+        BahaMarCheckAvailability.Input bad = new BahaMarCheckAvailability.Input();
+        bad.experienceName='Nonexistent'; bad.bookingDate=String.valueOf(Date.today().addDays(32));
+        System.assertEquals(false, BahaMarCheckAvailability.run(new List<BahaMarCheckAvailability.Input>{bad})[0].available);
+    }
+
     @IsTest static void updateDates() {
         BahaMarUpdateReservationDates.Input i = new BahaMarUpdateReservationDates.Input();
         i.confirmationNumber='BM-4271';

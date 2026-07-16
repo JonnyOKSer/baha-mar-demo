@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiFunction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Checks open session times and remaining spots for a Baha Mar experience on a specific date. Call before booking so the guest can choose a time; returns per-person price and VAT note.</description>
+    <invocationTarget>BahaMarCheckAvailability</invocationTarget>
+    <invocationTargetType>apex</invocationTargetType>
+    <isConfirmationRequired>false</isConfirmationRequired>
+    <masterLabel>BahaMar Check Availability</masterLabel>
+</GenAiFunction>

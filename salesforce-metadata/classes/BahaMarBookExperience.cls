@@ -4,6 +4,7 @@ public with sharing class BahaMarBookExperience {
         @InvocableVariable(label='Confirmation Number' required=true description='The guest reservation confirmation number, e.g. BM-4271') public String confirmationNumber;
         @InvocableVariable(label='Date' required=true description='Booking date in YYYY-MM-DD format') public String bookingDate;
         @InvocableVariable(label='Party Size' required=true) public Integer partySize;
+        @InvocableVariable(label='Time Slot' description='Optional session time chosen by the guest, e.g. 9:30 AM') public String timeSlot;
     }
     public class Output {
         @InvocableVariable(label='Success') public Boolean success;
@@ -28,8 +29,13 @@ public with sharing class BahaMarBookExperience {
             insert b;
             b = [SELECT Name FROM BahaMar_Experience_Booking__c WHERE Id = :b.Id];
             o.success = true;
-            o.confirmation = es[0].Name + ' confirmed for ' + String.valueOf(d) + ', party of ' + String.valueOf(i.partySize)
-                + '. Booking ref ' + b.Name + '. $' + String.valueOf(es[0].Price__c * i.partySize) + ' charged to room (' + rs[0].Name + ').';
+            Decimal total = es[0].Price__c * i.partySize;
+            Decimal vat = (total * 0.10).setScale(2);
+            Decimal grand = (total + vat).setScale(2);
+            o.confirmation = es[0].Name + ' confirmed for ' + String.valueOf(d)
+                + (String.isBlank(i.timeSlot) ? '' : ' at ' + i.timeSlot) + ', party of ' + String.valueOf(i.partySize)
+                + '. Booking ref ' + b.Name + '. $' + total.setScale(2).toPlainString() + ' + $' + vat.toPlainString()
+                + ' VAT = $' + grand.toPlainString() + ' charged to room (' + rs[0].Name + ').';
             outs.add(o);
         }
         return outs;
